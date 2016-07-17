@@ -1,0 +1,78 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+}
+
+.container {
+	background-color: #F2F2F0;
+	width: 600px;
+	margin: 30px auto;
+	padding: 40px;
+	border-radius: 10px;
+	overflow: auto;
+}
+
+h1 {
+	font-size: 170%;
+	/*text-align: center;*/
+	margin-bottom: 20px;
+}
+
+h3 {
+	font-size: 140%;
+	margin: 15px 0;
+}
+
+.order-container {
+	margin: 20px 0;
+}
+
+
+.order-container ul {
+	/*margin-left: 70px;*/
+	margin-top: 5px;
+}
+
+.order-container ul li {
+	list-style: none;
+	padding: 10px;
+	background-color: #D4D2D2;
+	border-radius: 5px;
+	margin: 10px;
+}
+
+.new-order form p {
+	margin: 5px 10px;
+}
+
+.new-order form p input{
+	margin-bottom: 5px;
+	margin-left: 5px;
+	padding: 5px;
+	border: 1px solid #777; 
+	border-radius: 3px;
+}
+
+.new-order form button {
+	background-color: transparent;
+	color: #111;
+	border: 1px solid #333;
+	padding: 5px 15px;
+	border-radius: 3px;
+	margin-top: 8px;
+	margin-left: 80px;
+	cursor: pointer;
+	outline: none;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.new-order form button:hover {
+	background-color: #333;
+	color: #fff;
+}

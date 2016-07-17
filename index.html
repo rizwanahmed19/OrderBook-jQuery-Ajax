@@ -20,9 +20,11 @@
 		
 		<div class="new-order">
 			<h3>Add new order:</h3>
-			<p>Name: <input type="text" id="name"></p>
-			<p>Order: <input type="text" id="order"></p>
-			<button id="add-order">Add!</button>
+			<form action="GET">
+				<p>Name: <input type="text" id="name" required></p>
+				<p>Order: <input type="text" id="order" required></p>
+				<button id="add-order">Add!</button>
+			</form>
 		</div>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
