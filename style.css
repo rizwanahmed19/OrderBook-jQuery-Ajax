@@ -47,6 +47,29 @@ h3 {
 	margin: 10px;
 }
 
+.order-container ul li button {
+	float: right;
+	background-color: transparent;
+	font-size: 80%;
+	border: 1px solid transparent;
+	margin-top: -5px;
+	color: #AFAFAF;
+	outline: none;
+	transition: color .2s, font-size .2s, font-weight .2s;
+}
+
+.order-container ul li button:hover {
+	/*border-color: #F43E3E;
+	background-color: #F43E3E;*/
+	color: #F02020;
+	font-size: 90%;
+	font-weight: bold;
+}
+
+.order-container ul li span {
+	font-weight: bold;
+}
+
 .new-order form p {
 	margin: 5px 10px;
 }
