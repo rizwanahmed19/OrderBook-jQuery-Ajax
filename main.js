@@ -4,7 +4,7 @@ $(function(){
 	var $order = $('#order');
 
 	function addOrder(order){
-		$orders.append('<li><button title="remove" class="remove" data-id=' + order.id +' >x</button><span>Name: </span>' + order.name +'<br /><span>Order: </span>' + order.order + '</li>');
+		$orders.append('<li data-id=' + order.id +'><button title="remove" class="remove">x</button><b>Name: </b><span class="name no-edit">' + order.name +'</span><input type="text" class="edit name"><br /><b>Order: </b><span class="order no-edit">' + order.order + '</span><input type="text" class="edit order"><br><button class="edit-btn edit-order no-edit">Edit</button><button class="edit-btn save-order edit">Save</button><button class="edit-btn cancel-edit edit">Cancel</button> </li>');
 	}
 
 	$.ajax({
@@ -35,18 +35,13 @@ $(function(){
 				$name.val("");
 				$order.val("");
 			}
-			// error: function(){
-			// 	alert("error saving data");
-			// }
 		});
 	});
 
 	$orders.on('click', '.remove', function(event) {
 		$li = $(this).parent();
-		// alert($(this).attr('data-id'));
-
 		$.ajax({
-			url: 'http://rest.learncode.academy/api/rizwanahmed/orders/' + $(this).attr('data-id'),
+			url: 'http://rest.learncode.academy/api/rizwanahmed/orders/' + $li.attr('data-id'),
 			type: 'DELETE',
 		})
 		.done(function() {
@@ -59,5 +54,41 @@ $(function(){
 		});
 		
 	});
+
+	$orders.on('click', '.edit-order', function(event) {
+		/* Act on the event */
+		$li = $(this).parent();
+		$li.find('input.name').val( $li.find('span.name').html() );
+		$li.find('input.order').val( $li.find('span.order').html() );
+		$li.addClass('edit');
+	});
 	
+	$orders.on('click', '.cancel-edit', function(event) {
+		/* Act on the event */
+		$(this).parent().removeClass('edit');
+	});
+
+	$orders.on('click', '.save-order', function(event) {
+		$li = $(this).parent();
+		var orderToUpdate = {
+			name: $li.find('input.name').val(),
+			order: $li.find('input.order').val()
+		};
+
+		$.ajax({
+			url: 'http://rest.learncode.academy/api/rizwanahmed/orders/' + $li.attr('data-id'),
+			type: 'PUT',
+			data: orderToUpdate,
+			success: function(newOrder){
+				$li.find('span.name').html(orderToUpdate.name);
+				$li.find('span.order').html(orderToUpdate.order);
+				$li.removeClass('edit');
+			},
+			error: function(){
+				alert('error updating data');
+			}
+		});
+
+		
+	});
 });
